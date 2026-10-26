@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "AI智能深度交互助手",
+    "version": "1.0",
+    "description": "自动与ChatGPT、Copilot、Gemini等AI进行智能对话，深度挖掘知识",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "scripting"
+    ],
+    "host_permissions": [
+      "https://chat.openai.com/*",
+      "https://copilot.microsoft.com/*",
+      "https://gemini.google.com/*",
+      "https://bard.google.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "https://chat.openai.com/*",
+          "https://copilot.microsoft.com/*",
+          "https://gemini.google.com/*",
+          "https://bard.google.com/*"
+        ],
+        "js": ["content.js"]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "AI智能交互助手"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": ["injected.js"],
+        "matches": [
+          "https://chat.openai.com/*",
+          "https://copilot.microsoft.com/*",
+          "https://gemini.google.com/*",
+          "https://bard.google.com/*"
+        ]
+      }
+    ]
+  }
